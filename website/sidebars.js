@@ -8,6 +8,8 @@ const sidebarSettings = {
       link: { type: "doc", id: "docs/supported-data-platforms" },
       items: [
         "docs/connect-adapters",
+        "docs/verified-adapters",
+        "docs/trusted-adapters",
         "docs/community-adapters",
         "docs/contribute-core-adapters",
       ],
@@ -137,6 +139,7 @@ const sidebarSettings = {
                 "docs/cloud/secure/ip-restrictions",
               ],
             }, // PrivateLink
+            "docs/cloud/billing",
           ],
         },
         {
@@ -207,6 +210,7 @@ const sidebarSettings = {
                 "docs/core/connect-data-platform/databend-setup",
                 "docs/core/connect-data-platform/fal-setup",
                 "docs/core/connect-data-platform/decodable-setup",
+                "docs/core/connect-data-platform/upsolver-setup",
               ],
             },
           ],
@@ -226,7 +230,6 @@ const sidebarSettings = {
           label: "Build your DAG",
           collapsed: true,
           items: [
-            "docs/build/sources",
             {
               type: "category",
               label: "Models",
@@ -236,19 +239,24 @@ const sidebarSettings = {
                 "docs/build/python-models",
               ],
             },
-            "docs/build/seeds",
             "docs/build/snapshots",
+            "docs/build/seeds",
+            "docs/build/tests",
+            "docs/build/jinja-macros",
+            "docs/build/sources",
             "docs/build/exposures",
             "docs/build/metrics",
             "docs/build/groups",
+            "docs/build/analyses",
           ],
         },
         {
           type: "category",
           label: "Build your metrics",
-          link: { type: "doc", id: "docs/build/build-metrics-intro"},
+          link: { type: "doc", id: "docs/build/build-metrics-intro" },
           collapsed: true,
           items: [
+            "docs/build/sl-getting-started",
             {
               type: "category",
               label: "About MetricFlow",
@@ -260,7 +268,6 @@ const sidebarSettings = {
                 "docs/build/metricflow-cli",
               ]
             },
-            "docs/build/sl-getting-started",
             {
               type: "category",
               label: "Semantic models",
@@ -274,7 +281,7 @@ const sidebarSettings = {
             {
               type: "category",
               label: "Metrics",
-              link: { type: "doc", id: "docs/build/metrics-overview"},
+              link: { type: "doc", id: "docs/build/metrics-overview" },
               items: [
                 "docs/build/cumulative",
                 "docs/build/derived",
@@ -289,7 +296,6 @@ const sidebarSettings = {
           label: "Enhance your models",
           collapsed: true,
           items: [
-            "docs/build/tests",
             "docs/build/materializations",
             "docs/build/incremental-models",
           ],
@@ -299,11 +305,9 @@ const sidebarSettings = {
           label: "Enhance your code",
           collapsed: true,
           items: [
-            "docs/build/jinja-macros",
             "docs/build/project-variables",
             "docs/build/environment-variables",
             "docs/build/packages",
-            "docs/build/analyses",
             "docs/build/hooks-operations",
           ],
         },
@@ -330,22 +334,15 @@ const sidebarSettings = {
       items: [
         "docs/deploy/job-scheduler",
         "docs/deploy/deploy-environments",
+        "docs/deploy/continuous-integration",
         {
           type: "category",
-          label: "dbt Cloud jobs",
-          link: { type: "doc", id: "docs/deploy/dbt-cloud-job" },
+          label: "Jobs",
+          link: { type: "doc", id: "docs/deploy/jobs" },
           items: [
-            "docs/deploy/job-settings",
-            "docs/deploy/job-commands",
-            "docs/deploy/job-triggers",
-          ],
-        },
-        {
-          type: "category",
-          label: "Continuous integration",
-          link: { type: "doc", id: "docs/deploy/continuous-integration" },
-          items: [
+            "docs/deploy/deploy-jobs",
             "docs/deploy/ci-jobs",
+            "docs/deploy/job-commands",
           ],
         },
         {
@@ -463,21 +460,51 @@ const sidebarSettings = {
               type: "category",
               label: "Schema",
               items: [
-                "docs/dbt-cloud-apis/discovery-schema-environment",
-                "docs/dbt-cloud-apis/discovery-schema-model",
-                "docs/dbt-cloud-apis/discovery-schema-models",
-                "docs/dbt-cloud-apis/discovery-schema-modelByEnv",
-                "docs/dbt-cloud-apis/discovery-schema-metric",
-                "docs/dbt-cloud-apis/discovery-schema-metrics",
-                "docs/dbt-cloud-apis/discovery-schema-source",
-                "docs/dbt-cloud-apis/discovery-schema-sources",
-                "docs/dbt-cloud-apis/discovery-schema-seed",
-                "docs/dbt-cloud-apis/discovery-schema-seeds",
-                "docs/dbt-cloud-apis/discovery-schema-snapshots",
-                "docs/dbt-cloud-apis/discovery-schema-test",
-                "docs/dbt-cloud-apis/discovery-schema-tests",
-                "docs/dbt-cloud-apis/discovery-schema-exposure",
-                "docs/dbt-cloud-apis/discovery-schema-exposures",
+                {
+                  type: "category",
+                  label: "Job",
+                  link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-schema-job" },
+                  items: [
+                    "docs/dbt-cloud-apis/discovery-schema-job-model",
+                    "docs/dbt-cloud-apis/discovery-schema-job-models",
+                    "docs/dbt-cloud-apis/discovery-schema-job-metric",
+                    "docs/dbt-cloud-apis/discovery-schema-job-metrics",
+                    "docs/dbt-cloud-apis/discovery-schema-job-source",
+                    "docs/dbt-cloud-apis/discovery-schema-job-sources",
+                    "docs/dbt-cloud-apis/discovery-schema-job-seed",
+                    "docs/dbt-cloud-apis/discovery-schema-job-seeds",
+                    // "docs/dbt-cloud-apis/discovery-schema-job-snapshot",
+                    "docs/dbt-cloud-apis/discovery-schema-job-snapshots",
+                    "docs/dbt-cloud-apis/discovery-schema-job-test",
+                    "docs/dbt-cloud-apis/discovery-schema-job-tests",
+                    "docs/dbt-cloud-apis/discovery-schema-job-exposure",
+                    "docs/dbt-cloud-apis/discovery-schema-job-exposures",
+                    // "docs/dbt-cloud-apis/discovery-schema-job-macro",
+                    // "docs/dbt-cloud-apis/discovery-schema-job-macros",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Environment",
+                  link: { type: "doc", id: "docs/dbt-cloud-apis/discovery-schema-environment" },
+                  items: [
+                    {
+                      type: "category",
+                      label: "Applied",
+                      items: [
+                        "docs/dbt-cloud-apis/discovery-schema-environment-applied-modelHistoricalRuns",
+                      ],
+                    },
+                    // Uncomment to add Definition subpage, but need to make items non-empty
+                    // {
+                    //   type: "category",
+                    //   label: "Definition",
+                    //   items: [
+                    //     // insert pages here
+                    //   ],
+                    // },
+                  ],
+                },
               ],
             },
           ],
@@ -591,6 +618,7 @@ const sidebarSettings = {
         "reference/resource-configs/doris-configs",
         "reference/resource-configs/fal-configs",
         "reference/resource-configs/oracle-configs",
+        "reference/resource-configs/upsolver-configs",
       ],
     },
     {
@@ -859,7 +887,8 @@ const sidebarSettings = {
             "guides/best-practices/how-we-structure/2-staging",
             "guides/best-practices/how-we-structure/3-intermediate",
             "guides/best-practices/how-we-structure/4-marts",
-            "guides/best-practices/how-we-structure/5-the-rest-of-the-project",
+            "guides/best-practices/how-we-structure/5-semantic-layer-marts",
+            "guides/best-practices/how-we-structure/6-the-rest-of-the-project",
           ],
         },
         {
@@ -909,18 +938,6 @@ const sidebarSettings = {
             "guides/best-practices/materializations/materializations-guide-6-examining-builds",
             "guides/best-practices/materializations/materializations-guide-7-conclusion",
           ],
-        }, 
-        {
-          type: "category",
-          label: "dbt Cloud Environment best practices",
-          link: {
-            type: "doc",
-            id: "guides/best-practices/environment-setup/1-env-guide-overview",
-          },
-          items: [
-            "guides/best-practices/environment-setup/2-one-deployment-environment",
-            "guides/best-practices/environment-setup/3-many-deployment-environments",
-          ],
         },
         "guides/best-practices/debugging-errors",
         "guides/best-practices/writing-custom-generic-tests",
@@ -952,13 +969,26 @@ const sidebarSettings = {
         },
         {
           type: "category",
-          label: "Customizing CI/CD",
+          label: "Set up Continuous Integration",
+          link: {
+            type: "doc",
+            id: "guides/orchestration/set-up-ci/introduction",
+          },
+          items: [
+            "guides/orchestration/set-up-ci/quick-setup",
+            "guides/orchestration/set-up-ci/run-dbt-project-evaluator",
+            "guides/orchestration/set-up-ci/lint-on-push",
+            "guides/orchestration/set-up-ci/multiple-checks",
+          ],
+        },
+        {
+          type: "category",
+          label: "Custom Continuous Deployment Workflows",
           link: {
             type: "doc",
             id: "guides/orchestration/custom-cicd-pipelines/1-cicd-background",
           },
           items: [
-            "guides/orchestration/custom-cicd-pipelines/2-lint-on-push",
             "guides/orchestration/custom-cicd-pipelines/3-dbt-cloud-job-on-merge",
             "guides/orchestration/custom-cicd-pipelines/4-dbt-cloud-job-on-pr",
             "guides/orchestration/custom-cicd-pipelines/5-something-to-consider",
@@ -1062,6 +1092,7 @@ const sidebarSettings = {
             "guides/dbt-ecosystem/adapter-development/5-documenting-a-new-adapter",
             "guides/dbt-ecosystem/adapter-development/6-promoting-a-new-adapter",
             "guides/dbt-ecosystem/adapter-development/7-verifying-a-new-adapter",
+            "guides/dbt-ecosystem/adapter-development/8-building-a-trusted-adapter",
           ],
         },
         {

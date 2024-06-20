@@ -1,8 +1,7 @@
 ---
-title: "Setup the Semantic Layer"
-description: Getting started with the dbt Semantic Layer
-displayText: "dbt Cloud Semantic Layer best practices"
-hoverSnippet: Learn how to get started with the dbt Semantic Layer
+title: "Set up MetricFlow"
+description: Getting started with the dbt and MetricFlow
+hoverSnippet: Learn how to get started with the dbt and MetricFlow
 ---
 
 ## Getting started
@@ -24,8 +23,8 @@ We'll use pip to install MetricFlow and our dbt adapter:
 python -m venv [virtual environment name]
 source [virtual environment name]/bin/activate
 # install dbt and MetricFlow
-pip install dbt-metricflow[adapter name]
-# e.g. dbt-metricflow[snowflake]
+pip install "dbt-metricflow[adapter name]"
+# e.g. pip install "dbt-metricflow[snowflake]"
 ```
 
 Lastly, to get to the pre-Semantic Layer starting state, checkout the `start-here` branch.
